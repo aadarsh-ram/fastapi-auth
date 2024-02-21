@@ -26,7 +26,7 @@
 
 Test in client-side using fetch:
 ```
-fetch("http://localhost:8081/user/signup", {
+fetch("http://localhost:8081/user/login", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
@@ -34,6 +34,21 @@ fetch("http://localhost:8081/user/signup", {
   body: JSON.stringify({
     email: "aadarsh@gmail.com",
     password: "aadarsh"
+  })
+}).then(response => response.json()).then(data => {
+    console.log(data);
+});
+
+fetch("http://localhost:8081/posts", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization" : "Bearer <access token here>"
+  },
+  body: JSON.stringify({
+    id: "1",
+    title: "This is a title",
+    content: "This is some content"
   })
 }).then(response => response.json()).then(data => {
     console.log(data);
